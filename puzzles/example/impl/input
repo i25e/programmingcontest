@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+printf "This is the example puzzle output for the Example puzzle, for user $1.\n"
+printf "For every other puzzle it is customized. But you do not need any input to solve the example puzzle.\n"
+RANDOM=$(echo $1 | md5sum | tr -dc [0-9] | cut -c1,2,3)
+printf "Here's what I got after seeding the random number generator with your username: $RANDOM\n"

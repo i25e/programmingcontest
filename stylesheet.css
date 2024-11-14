@@ -1,0 +1,29 @@
+#topbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#topbar li {
+    float: left;
+    display: block;
+    padding: 16px;
+}
+
+.email {
+    background: black;
+    color: white;
+}
+
+.error {
+    color: red;
+    border: 2px solid black;
+    background: lightgray;
+}
+
+.info {
+    color: green;
+    border: 2px solid green;
+    background: lightyellow;
+}
