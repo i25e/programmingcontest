@@ -27,7 +27,7 @@
 	if (!$cached) {
 	    $cached = exec(__DIR__ . '/' . $_GET['puzzle'] . '/impl/solution ' . $_SESSION['user']);
 	    record_answer($_SESSION['user'], $_GET['puzzle'], $cached);
-	    echo '<!-- Answer was grabbed from database -->';
+	    echo '<!-- Solution updated in database -->';
 	}
 
 	if ($cached != $_GET['answer']) {
