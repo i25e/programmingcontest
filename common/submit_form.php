@@ -9,7 +9,7 @@ function submit_form($puzzle, $prompt)
 {
     if (isSet($_SESSION['user']))
 	echo '
-<form method="get" action="/puzzles/submission.php">
+<form method="post" action="/puzzles/submission.php">
     <label for="answer">' . $prompt . '</label>
     <input type="text" id="answer" name="answer">
     <input type="hidden" id="puzzle" name="puzzle" value="' . $puzzle . '">

@@ -1,48 +1,53 @@
 <html>
     <head>
 	<title>Submit puzzle answer</title>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/transactions.php'; ?>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/util.php'; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "include/transactions.php"; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "include/util.php"; ?>
 	<link rel="stylesheet" href="/stylesheet.css<?php add_time_query(); ?>"/>
 	<?php session_start(); ?>
     </head>
     <body>
 	<?php
-	assert_loggedin('You must log in to submit a puzzle answer');
-	include $_SERVER['DOCUMENT_ROOT'] . 'common/topbar.php';
+	assert_loggedin("You must log in to submit a puzzle answer");
+	include $_SERVER["DOCUMENT_ROOT"] . "common/topbar.php";
 	topbar();
 
-	if (!isSet($_GET['puzzle'])) {
+	if (!isSet($_POST["puzzle"])) {
 	    echo "No puzzle selected.";
 	    return;
 	}
 
-	if (!isSet($_GET['answer'])) {
+	if (!isSet($_POST["answer"])) {
 	    echo "No answer provided.";
 	    return;
 	}
 
-	$cached = get_answer($_SESSION['user'], $_GET['puzzle']);
+	$cached = get_answer($_SESSION["user"], $_POST["puzzle"]);
 
 	if (!$cached) {
-	    $cached = exec(__DIR__ . '/' . $_GET['puzzle'] . '/impl/solution ' . $_SESSION['user']);
-	    record_answer($_SESSION['user'], $_GET['puzzle'], $cached);
-	    echo '<!-- Solution updated in database -->';
+	    $cached = exec(__DIR__ . "/" . $_POST["puzzle"] . "/impl/solution " . $_SESSION["user"]);
+	    record_answer($_SESSION["user"], $_POST["puzzle"], $cached);
+	    echo "<!-- Solution updated in database -->";
 	}
 
-	if ($cached != $_GET['answer']) {
-	    echo 'Incorrect answer.';
+	$submittedat = get_submitted_at($_SESSION["user"], $_POST["puzzle"]);
+
+	if ($cached != $_POST["answer"]) {
+	    if ($submittedat)
+		div("puzzle-fail", "Incorrect answer. But you have already solved this problem.");
+	    else
+		div("puzzle-fail", "Incorrect answer");
 	} else {
-	    if (get_submitted_at($_SESSION['user'], $_GET['puzzle'])) {
-		div('puzzle-success', 'Your answer was correct, but you already solved this problem.'); 
+	    if ($submittedat) {
+		div("puzzle-success", "Your answer was correct, but you already solved this problem."); 
 	    } else {
-		record_submitted_at($_SESSION['user'], $_GET['puzzle'], time());
-		div('puzzle-success', 'You got it right!');
+		div("puzzle-success", "You got it right!");
+		record_submitted_at($_SESSION["user"], $_POST["puzzle"], time());
 	    }
 	}
 	?>
 
 	<br>
-	<a href="/puzzles/<?php echo $_GET['puzzle'] ?>/index.php">Back to puzzle</a>
+	<a href="/puzzles/<?php echo $_POST["puzzle"] ?>/index.php">Back to puzzle</a>
     </body>
 </html>

@@ -17,7 +17,7 @@
 
 	# can't use div() because passthru() doesn't return a string
 	echo '<div class="puzzle-input"><pre>';
-	echo passthru(__DIR__ . '/' . $_GET['puzzle'] . '/impl/input ' . $_SESSION['user']);
+	passthru(__DIR__ . '/' . $_GET['puzzle'] . '/impl/input ' . $_SESSION['user']);
 	echo '</pre></div>';
 	?>
     </body>
