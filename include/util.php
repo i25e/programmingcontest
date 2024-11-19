@@ -28,3 +28,14 @@ function info($s)
 {
     div('info', $s);
 }
+
+function basename_n($dir, $n)
+{
+    $r = basename($dir);
+    while (--$n) {
+	$dir = dirname($dir);
+	$r = basename($dir) . '/' . $r;
+    }
+    
+    return $r;
+}

@@ -15,19 +15,19 @@ function add_user($name, $user, $hash)
     $db = open_database();
 
     # check to make sure the user doesn't already exist
-	$stmt = $db->prepare('select count(*) as c from UserInfo where User = :user');
-	$stmt->bindValue(':user', $user);
+    $stmt = $db->prepare('select count(*) as c from UserInfo where User = :user');
+    $stmt->bindValue(':user', $user);
 
-	if ($stmt->execute()->fetchArray()['c'] > 0)
-	    return false;
+    if ($stmt->execute()->fetchArray()['c'] > 0)
+	return false;
 
-	# add user to database
-	$stmt = $db->prepare("insert into UserInfo (Name, User, Password) values (:name, :user, :password)");
-	$stmt->bindValue(':name', $name);
-	$stmt->bindValue(':user', $user);
-	$stmt->bindValue(':password', $hash);
+    # add user to database
+    $stmt = $db->prepare("insert into UserInfo (Name, User, Password) values (:name, :user, :password)");
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':user', $user);
+    $stmt->bindValue(':password', $hash);
 
-	return $stmt->execute();
+    return $stmt->execute();
 }
 
 # Return true if user and password match existing user, false otherwise
@@ -38,7 +38,7 @@ function authenticate_user($user, $pass)
     $stmt->bindValue(':user', $user);
 
     if (($input = $stmt->execute()->fetchArray()) == false)
-		return false;
+	return false;
 
     return password_verify($pass, $input['Password']);
 }
@@ -78,7 +78,7 @@ function get_submitted_at($user, $puzzle)
 
     /* row doesn't exist or col isn't set */
     if (!$input || !isSet($input['SubmittedAt']))
-		return false;
+	return false;
 
     return $input['SubmittedAt'];
 }
@@ -106,7 +106,7 @@ function get_answer($user, $puzzle)
 
     /* row doesn't exist or col isn't set */
     if (!$input || !isSet($input['Answer']))
-		return false;
+	return false;
 
     return $input['Answer'];
 }
