@@ -1,4 +1,3 @@
 private/
 puzzles/
-!puzzles/input.php
-!puzzles/submisssion.php
+!puzzles/{submisssion.php, input.php, example}
