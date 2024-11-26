@@ -25,7 +25,10 @@
 	$cached = get_answer($_SESSION["user"], $_POST["puzzle"]);
 
 	if (!$cached) {
-	    $cached = exec(__DIR__ . "/" . $_POST["puzzle"] . "/impl/solution " . $_SESSION["user"]);
+	    $input = puzzle_input_script($_POST["puzzle"]) . " " . $_SESSION["user"];
+	    $solution = puzzle_solution_script($_POST["puzzle"]);
+	    $cached = exec($input . " | " . $solution);
+
 	    record_answer($_SESSION["user"], $_POST["puzzle"], $cached);
 	    echo "<!-- Solution updated in database -->";
 	}
