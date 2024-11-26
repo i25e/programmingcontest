@@ -43,7 +43,7 @@ This is an example of preformatted input/output.
 	</div>
 
 	<div class="puzzle-description">
-	    The answer for this particular puzzle is <span id="spoiler">"(yourname) puzzle solution"</span>
+	    The answer for this particular puzzle is <span id="spoiler">"puzzle solution"</span>
 	</div>
 
 	<a href="/puzzles/input.php?puzzle=example">Get your input</a>
