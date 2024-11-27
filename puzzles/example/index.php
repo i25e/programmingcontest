@@ -1,15 +1,15 @@
 <html>
     <head>
 	<title>The example puzzle</title>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/transactions.php'; ?>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/util.php'; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/transactions.php"; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/util.php"; ?>
 	<link rel="stylesheet" href="/stylesheet.css<?php add_time_query(); ?>"/>
 	<?php session_start(); ?>
     </head>
 
     <body>
 	<?php
-	include $_SERVER['DOCUMENT_ROOT'] . 'common/topbar.php';
+	include $_SERVER["DOCUMENT_ROOT"] . "/common/topbar.php";
 	topbar();
 
 	if (isSet($_SESSION['user']))
@@ -49,7 +49,7 @@ This is an example of preformatted input/output.
 	<a href="/puzzles/input.php?puzzle=example">Get your input</a>
 
 	<?php
-	include $_SERVER['DOCUMENT_ROOT'] . 'common/submit_form.php';
+	include $_SERVER["DOCUMENT_ROOT"] . "/common/submit_form.php";
 	submit_form(basename(__DIR__), 'Answer');
 	?>
     </body>

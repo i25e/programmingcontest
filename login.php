@@ -1,8 +1,8 @@
 <html>
     <head>
 	<title>Log in</title>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/transactions.php'; ?>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . 'include/util.php'; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/transactions.php"; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/util.php"; ?>
 	<link rel="stylesheet" href="/stylesheet.css<?php add_time_query(); ?>"/>
     </head>
     <body>

@@ -35,10 +35,10 @@ function basename_n($dir, $n)
 
 function puzzle_input_script($puzzle)
 {
-    return $_SERVER["DOCUMENT_ROOT"] . "puzzles/" . $puzzle . "/impl/input";
+    return $_SERVER["DOCUMENT_ROOT"] . "/puzzles/" . $puzzle . "/impl/input";
 }
 
 function puzzle_solution_script($puzzle)
 {
-    return $_SERVER["DOCUMENT_ROOT"] . "puzzles/" . $puzzle . "/impl/solution";
+    return $_SERVER["DOCUMENT_ROOT"] . "/puzzles/" . $puzzle . "/impl/solution";
 }

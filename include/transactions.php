@@ -5,7 +5,7 @@
 function open_database()
 {
     # probably shouldn't be creating a new object every time, but whatever
-    $db = new SQLite3($_SERVER['DOCUMENT_ROOT'] . 'private/test.db');
+    $db = new SQLite3($_SERVER["DOCUMENT_ROOT"] . "/private/test.db");
     $db->enableExceptions(true);
     return $db;
 }

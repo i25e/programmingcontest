@@ -1,15 +1,15 @@
 <html>
     <head>
 	<title>Submit puzzle answer</title>
-	<?php include $_SERVER["DOCUMENT_ROOT"] . "include/transactions.php"; ?>
-	<?php include $_SERVER["DOCUMENT_ROOT"] . "include/util.php"; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/transactions.php"; ?>
+	<?php include $_SERVER["DOCUMENT_ROOT"] . "/include/util.php"; ?>
 	<link rel="stylesheet" href="/stylesheet.css<?php add_time_query(); ?>"/>
 	<?php session_start(); ?>
     </head>
     <body>
 	<?php
 	assert_loggedin("You must log in to submit a puzzle answer");
-	include $_SERVER["DOCUMENT_ROOT"] . "common/topbar.php";
+	include $_SERVER["DOCUMENT_ROOT"] . "/common/topbar.php";
 	topbar();
 
 	if (!isSet($_POST["puzzle"])) {
