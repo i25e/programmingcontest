@@ -12,7 +12,7 @@
 	topbar();
 	?>
 
-	<a href="puzzles/fall2024/">This year's puzzles</a>
+	<a href="puzzles/spring2025/">This year's puzzles</a>
 	<br>
 	<a href="puzzles/example/">Example puzzle</a>
     </body>
